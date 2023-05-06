@@ -41,6 +41,12 @@ public class User implements UserDetails {
     )
     private Set<MyRole> roles = new HashSet<>();
 
+    public User(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles.stream()

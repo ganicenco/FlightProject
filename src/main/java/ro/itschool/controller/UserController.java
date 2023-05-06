@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ro.itschool.controller.modelDTO.UserDTO;
 import ro.itschool.entity.User;
+import ro.itschool.mapper.UserMapper;
 import ro.itschool.service.UserService;
 
 import java.util.List;
@@ -14,10 +16,13 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-
+    private final UserMapper userMapper;
     @GetMapping("/all")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public List<UserDTO> getAllUsers() {
+        return userService.getAllUsers()
+                .stream()
+                .map(userMapper::fromEntity)
+                .toList();
 
 
     }

@@ -31,9 +31,23 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public Optional<Booking> findAll() {
+    public Optional<Booking> findAllBookings() {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> optionalLoggedInUser = userRepository.findByUsername(principal.getUsername());
         return bookingRepository.findById(optionalLoggedInUser.get().getId());
+    }
+
+    @Override
+    public void cancelBooking(Long bookingId) {
+        bookingRepository.deleteById(bookingId);
+    }
+
+    @Override
+    public void modifyBooking(Booking booking) {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> optionalLoggedInUser = userRepository.findByUsername(principal.getUsername());
+        booking.setUser(optionalLoggedInUser.get());
+        bookingRepository.save(booking);
+
     }
 }

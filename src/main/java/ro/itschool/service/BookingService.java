@@ -7,5 +7,9 @@ import java.util.Optional;
 public interface BookingService {
     Booking newBooking(Booking booking);
 
-    Optional<Booking> findAll();
+    Optional<Booking> findAllBookings();
+
+    void cancelBooking(Long bookingID);
+
+    void modifyBooking(Booking booking);
 }

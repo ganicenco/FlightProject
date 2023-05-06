@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Embeddable
@@ -18,10 +20,10 @@ public class TravelDetails {
 
     private String destination;
 
-//    @Temporal(TemporalType.TIMESTAMP)
-//    private LocalDateTime departureDate;
-//
-//    @Temporal(TemporalType.TIMESTAMP)
-//    private LocalDateTime returnDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime departureDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime returnDate;
 
 }

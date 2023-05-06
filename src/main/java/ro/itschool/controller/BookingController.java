@@ -1,11 +1,10 @@
 package ro.itschool.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.itschool.entity.Booking;
 import ro.itschool.service.BookingService;
-
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,13 +15,25 @@ public class BookingController {
 
 
     @PostMapping("/new")
-    public void newBooking(@RequestBody Booking booking){
+    public ResponseEntity<?> newBooking(@RequestBody Booking booking) {
         bookingService.newBooking(booking);
-    }
-    @GetMapping("/all")
-    public Optional<Booking> getAllBookings(){
-        return bookingService.findAll();
+        return ResponseEntity.ok("New booking registered");
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllBookings() {
+        var allBookings =  bookingService.findAllBookings();
+         return ResponseEntity.ok(allBookings);
+    }
+
+    @DeleteMapping("/cancel/{bookingId}")
+    public void cancelBooking(@PathVariable Long bookingId) {
+        bookingService.cancelBooking(bookingId);
+    }
+
+    @PutMapping("/update")
+    public void modifyBooking(@RequestBody Booking booking) {
+        bookingService.modifyBooking(booking);
+    }
 
 }
