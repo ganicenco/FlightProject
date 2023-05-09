@@ -27,13 +27,15 @@ public class BookingController {
     }
 
     @DeleteMapping("/cancel/{bookingId}")
-    public void cancelBooking(@PathVariable Long bookingId) {
+    public ResponseEntity<?> cancelBooking(@PathVariable Long bookingId) {
         bookingService.cancelBooking(bookingId);
+        return ResponseEntity.ok("Booking with id " + bookingId + " was successfully deleted!");
     }
 
     @PutMapping("/update")
-    public void modifyBooking(@RequestBody Booking booking) {
+    public ResponseEntity<?> modifyBooking(@RequestBody Booking booking) {
         bookingService.modifyBooking(booking);
+        return ResponseEntity.ok("Your booking was successfully modified!");
     }
 
 }
