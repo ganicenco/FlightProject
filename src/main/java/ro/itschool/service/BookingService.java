@@ -5,7 +5,7 @@ import ro.itschool.entity.Booking;
 import java.util.Optional;
 
 public interface BookingService {
-    Booking newBooking(Booking booking);
+    void newBooking(Booking booking);
 
     Optional<Booking> findAllBookings();
 

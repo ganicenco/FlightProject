@@ -13,6 +13,7 @@ import ro.itschool.enums.RoleName;
 import ro.itschool.entity.User;
 import ro.itschool.repository.RoleRepository;
 import ro.itschool.repository.UserRepository;
+import ro.itschool.service.impl.JwtServiceImpl;
 
 import java.util.Set;
 
@@ -32,7 +33,7 @@ public class AuthenticationService {
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        //user.setRoles(Set.of(userRole));
+        user.setRoles(Set.of(userRole));
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         repository.save(user);

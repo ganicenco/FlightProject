@@ -19,22 +19,23 @@ public class BookingServiceImpl implements BookingService {
     private final UserRepository userRepository;
 
     @Override
-    public Booking newBooking(Booking booking) {
+    public void newBooking(Booking booking) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> optionalLoggedInUser = userRepository.findByUsername(principal.getUsername());
         booking.setUser(optionalLoggedInUser.get());
         booking.setAirplane(booking.getAirplane());
         booking.setTravelDetails(booking.getTravelDetails());
         booking.setUserDetails(booking.getUserDetails());
-        return bookingRepository.save(booking);
+        bookingRepository.save(booking);
 
     }
 
     @Override
     public Optional<Booking> findAllBookings() {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Optional<User> optionalLoggedInUser = userRepository.findByUsername(principal.getUsername());
-        return bookingRepository.findById(optionalLoggedInUser.get().getId());
+        User optionalLoggedInUser = userRepository.findByUsername(principal.getUsername())
+                .orElseThrow(() -> new RuntimeException("Ceva"));
+        return bookingRepository.findById(optionalLoggedInUser.getId());
     }
 
     @Override
