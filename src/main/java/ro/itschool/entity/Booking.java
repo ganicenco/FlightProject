@@ -1,5 +1,6 @@
 package ro.itschool.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +25,8 @@ public class Booking {
     @Embedded
     private UserDetails userDetails;
 
-    @OneToOne
+    @ManyToOne
+    @JsonBackReference
     private User user;
 
 }

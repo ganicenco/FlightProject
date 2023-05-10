@@ -2,14 +2,18 @@ package ro.itschool.service;
 
 import ro.itschool.entity.Booking;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface BookingService {
     void newBooking(Booking booking);
 
-    Optional<Booking> findAllBookings();
+    List<Booking> findAllBookings();
 
-    void cancelBooking(Long bookingID);
+    void cancelBooking(Long bookingId);
 
     void modifyBooking(Booking booking);
+
+    Optional<Booking> findById(Long booking);
+
 }
