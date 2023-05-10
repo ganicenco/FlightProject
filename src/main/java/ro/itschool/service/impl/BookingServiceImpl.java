@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ro.itschool.entity.Booking;
 import ro.itschool.entity.User;
+import ro.itschool.exceptions.BookingNotFoundException;
 import ro.itschool.exceptions.UserNotFoundException;
 import ro.itschool.repository.BookingRepository;
 import ro.itschool.repository.UserRepository;
@@ -45,23 +46,16 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void cancelBooking(Long bookingId) {
-        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User loggedInUser = userRepository.findByUsername(principal.getUsername())
-                .orElseThrow(() -> new UserNotFoundException("User does not exist"));
-        //   loggedInUser.getBookingList()
-
-        //.removeIf(booking -> booking.getId() == bookingId);
-
-
+//        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User loggedInUser = userRepository.findByUsername(principal.getUsername())
+//                .orElseThrow(() -> new UserNotFoundException("User does not exist"));
 //
-//                .stream()
-//                .filter(booking -> Objects.equals(booking.getId(), bookingId))
-//                .toList()
-//                .forEach(booking -> bookingRepository.deleteById(bookingId));
-
-
-        bookingRepository.findById(bookingId)
-                .ifPresentOrElse(booking -> bookingRepository.deleteById(bookingId), () -> System.out.println("Booking not found"));
+        Optional<Booking> booking = bookingRepository.findById(bookingId);
+        booking.ifPresent(p -> {
+            p.setUser(null);
+            bookingRepository.save(p); // daca se comenteaza linia 56, rezultatul e acelasi
+            bookingRepository.deleteById(bookingId);
+        });
     }
 
     @Override
