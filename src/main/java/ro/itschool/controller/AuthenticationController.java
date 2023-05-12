@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RestController;
 import ro.itschool.controller.model.AuthenticationRequest;
 import ro.itschool.controller.model.AuthenticationResponse;
 import ro.itschool.controller.model.RegisterRequest;
-import ro.itschool.service.AuthenticationService;
+import ro.itschool.service.impl.AuthenticationServiceImpl;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/authenticate")
 public class AuthenticationController {
 
-    private final AuthenticationService authenticationService;
+    private final AuthenticationServiceImpl authenticationServiceImpl;
 
     @PostMapping("/register")
     public AuthenticationResponse register(@RequestBody RegisterRequest registerRequest) {
-        return authenticationService.register(registerRequest);
+        return authenticationServiceImpl.register(registerRequest);
     }
 
     @PostMapping("/login")
     public AuthenticationResponse authenticate(@RequestBody AuthenticationRequest authenticationRequest) {
-        return authenticationService.authenticate(authenticationRequest);
+        return authenticationServiceImpl.authenticate(authenticationRequest);
     }
 
 }

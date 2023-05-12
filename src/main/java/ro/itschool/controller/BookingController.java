@@ -28,6 +28,7 @@ public class BookingController {
         var allBookings = bookingService.findAllBookings();
         return ResponseEntity.ok(allBookings);
     }
+
     @DeleteMapping("/cancel/{bookingId}")
     public ResponseEntity<?> cancelBooking(@PathVariable Long bookingId) {
         var bookingToDelete = bookingService.findById(bookingId);
@@ -39,10 +40,10 @@ public class BookingController {
         }
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<?> modifyBooking(@RequestBody Booking booking) {
-        bookingService.modifyBooking(booking);
-        return ResponseEntity.ok("Your booking was successfully modified!");
-    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity modifyBooking( @PathVariable Long id, @RequestBody Booking updatedBooking) throws Throwable {
+            bookingService.modifyBooking(id, updatedBooking);
+            return ResponseEntity.ok("Your booking was successfully modified!");
+        }
 
-}
+    }
