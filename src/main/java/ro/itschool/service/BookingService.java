@@ -13,8 +13,7 @@ public interface BookingService {
 
     void cancelBooking(Long bookingId);
 
-    void modifyBooking(Long id, Booking updatedBooking) throws Throwable;
+    void modifyBooking(Long id, Booking updatedBooking);
 
-    Optional<Booking> findById(Long booking);
 
 }

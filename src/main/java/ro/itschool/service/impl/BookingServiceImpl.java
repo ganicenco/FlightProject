@@ -47,26 +47,18 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void cancelBooking(Long bookingId) {
-//        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User loggedInUser = userRepository.findByUsername(principal.getUsername())
-//                .orElseThrow(() -> new UserNotFoundException("User does not exist"));
-//
-        Optional<Booking> booking = bookingRepository.findById(bookingId);
-        booking.ifPresent(p -> {
-            p.setUser(null);
-            bookingRepository.save(p); // daca se comenteaza linia 58, rezultatul e acelasi
-            //bookingRepository.deleteById(bookingId);
-            bookingRepository.delete(p); //rezultat identic cu linia 59
-        });
+        var bookingToBeDeleted = bookingRepository.findById(bookingId).orElseThrow(() -> new BookingNotFoundException("Booking not found!"));
+        bookingToBeDeleted.setUser(null);
+        bookingRepository.delete(bookingToBeDeleted);
     }
 
     @Override
-    public void modifyBooking(Long id, Booking updatedBooking) throws BookingNotFoundException {
+    public void modifyBooking(Long id, Booking updatedBooking) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User loggedInUser = userRepository.findByUsername(principal.getUsername())
                 .orElseThrow(() -> new UserNotFoundException("User does not exist"));
 
-        var bookingToBeModified = bookingRepository.findById(id).orElseThrow();
+        var bookingToBeModified = bookingRepository.findById(id).orElseThrow(() -> new BookingNotFoundException("Booking not found!"));
         bookingToBeModified.setAirplane(updatedBooking.getAirplane());
         bookingToBeModified.setTravelDetails(updatedBooking.getTravelDetails());
         bookingToBeModified.setUserDetails(updatedBooking.getUserDetails());
@@ -74,8 +66,4 @@ public class BookingServiceImpl implements BookingService {
         bookingRepository.save(bookingToBeModified);
     }
 
-    @Override
-    public Optional<Booking> findById(Long booking) {
-        return bookingRepository.findById(booking);
-    }
 }
