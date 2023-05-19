@@ -1,10 +1,8 @@
 package ro.itschool.service;
 
-import ro.itschool.entity.Booking;
+import ro.itschool.model.Booking;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
 public interface BookingService {
     void newBooking(Booking booking);

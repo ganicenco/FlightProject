@@ -1,9 +1,9 @@
 package ro.itschool.service;
 
 import org.springframework.stereotype.Service;
-import ro.itschool.controller.model.AuthenticationRequest;
-import ro.itschool.controller.model.AuthenticationResponse;
-import ro.itschool.controller.model.RegisterRequest;
+import ro.itschool.model.modelAuth.AuthenticationRequest;
+import ro.itschool.model.modelAuth.AuthenticationResponse;
+import ro.itschool.model.modelAuth.RegisterRequest;
 
 @Service
 public interface AuthenticationService {

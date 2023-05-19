@@ -8,7 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import ro.itschool.entity.User;
+import ro.itschool.model.User;
 import ro.itschool.service.JwtService;
 
 import java.security.Key;

@@ -1,4 +1,4 @@
-package ro.itschool.controller.modelDTO;
+package ro.itschool.model.modelDto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;

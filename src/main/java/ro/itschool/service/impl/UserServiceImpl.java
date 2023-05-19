@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ro.itschool.entity.User;
+import ro.itschool.model.User;
 import ro.itschool.repository.UserRepository;
 import ro.itschool.service.UserService;
 
@@ -14,6 +14,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository userRepository;
+
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();

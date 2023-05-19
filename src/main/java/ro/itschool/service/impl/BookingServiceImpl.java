@@ -3,9 +3,8 @@ package ro.itschool.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import ro.itschool.entity.Airplane;
-import ro.itschool.entity.Booking;
-import ro.itschool.entity.User;
+import ro.itschool.model.Booking;
+import ro.itschool.model.User;
 import ro.itschool.exceptions.BookingNotFoundException;
 import ro.itschool.exceptions.UserNotFoundException;
 import ro.itschool.repository.BookingRepository;
@@ -14,8 +13,6 @@ import ro.itschool.service.BookingService;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +28,7 @@ public class BookingServiceImpl implements BookingService {
         booking.setUser(optionalLoggedInUser.get());
         booking.setAirplane(booking.getAirplane());
         booking.setTravelDetails(booking.getTravelDetails());
-        booking.setUserDetails(booking.getUserDetails());
+        booking.setUserInfo(booking.getUserInfo());
         bookingRepository.save(booking);
 
     }
@@ -61,7 +58,7 @@ public class BookingServiceImpl implements BookingService {
         var bookingToBeModified = bookingRepository.findById(id).orElseThrow(() -> new BookingNotFoundException("Booking not found!"));
         bookingToBeModified.setAirplane(updatedBooking.getAirplane());
         bookingToBeModified.setTravelDetails(updatedBooking.getTravelDetails());
-        bookingToBeModified.setUserDetails(updatedBooking.getUserDetails());
+        bookingToBeModified.setUserInfo(updatedBooking.getUserInfo());
         bookingToBeModified.setUser(loggedInUser);
         bookingRepository.save(bookingToBeModified);
     }

@@ -1,7 +1,7 @@
 package ro.itschool.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ro.itschool.entity.User;
+import ro.itschool.model.User;
 
 import java.util.Optional;
 

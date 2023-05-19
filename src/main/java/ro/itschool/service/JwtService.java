@@ -3,7 +3,7 @@ package ro.itschool.service;
 import io.jsonwebtoken.Claims;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import ro.itschool.entity.User;
+import ro.itschool.model.User;
 
 import java.util.Map;
 import java.util.function.Function;

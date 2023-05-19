@@ -1,4 +1,4 @@
-package ro.itschool.entity;
+package ro.itschool.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -23,7 +23,7 @@ public class Booking {
     private TravelDetails travelDetails;
 
     @Embedded
-    private UserDetails userDetails;
+    private UserInfo userInfo;
 
     @ManyToOne
     @JsonBackReference

@@ -1,4 +1,4 @@
-package ro.itschool.entity;
+package ro.itschool.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;

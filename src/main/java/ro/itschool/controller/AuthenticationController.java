@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ro.itschool.controller.model.AuthenticationRequest;
-import ro.itschool.controller.model.AuthenticationResponse;
-import ro.itschool.controller.model.RegisterRequest;
+import ro.itschool.model.modelAuth.AuthenticationRequest;
+import ro.itschool.model.modelAuth.AuthenticationResponse;
+import ro.itschool.model.modelAuth.RegisterRequest;
 import ro.itschool.service.impl.AuthenticationServiceImpl;
 
 @RestController

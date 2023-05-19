@@ -1,8 +1,8 @@
 package ro.itschool.mapper;
 
 import org.springframework.stereotype.Component;
-import ro.itschool.controller.modelDTO.UserDTO;
-import ro.itschool.entity.User;
+import ro.itschool.model.modelDto.UserDTO;
+import ro.itschool.model.User;
 
 @Component
 public class UserMapper {

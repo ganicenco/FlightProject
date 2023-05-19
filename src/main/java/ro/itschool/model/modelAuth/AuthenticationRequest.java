@@ -1,4 +1,4 @@
-package ro.itschool.controller.model;
+package ro.itschool.model.modelAuth;
 
 import lombok.Getter;
 import lombok.Setter;

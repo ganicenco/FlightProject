@@ -3,7 +3,7 @@ package ro.itschool.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ro.itschool.entity.Booking;
+import ro.itschool.model.Booking;
 import ro.itschool.service.BookingService;
 
 @RestController

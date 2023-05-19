@@ -1,16 +1,17 @@
-package ro.itschool.entity;
+package ro.itschool.model;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Setter
 @Getter
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDetails {
+public class UserInfo {
 
     private String firstName;
     private String lastName;

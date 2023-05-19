@@ -1,4 +1,4 @@
-package ro.itschool.entity;
+package ro.itschool.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
