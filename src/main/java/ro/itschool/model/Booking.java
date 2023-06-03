@@ -27,6 +27,6 @@ public class Booking {
 
     @ManyToOne
     @JsonBackReference
-    private User user;
+    private LoggedUser loggedUser;
 
 }

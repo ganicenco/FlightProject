@@ -1,10 +1,10 @@
 package ro.itschool.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ro.itschool.model.User;
+import ro.itschool.model.LoggedUser;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUsername(String username);
+public interface UserRepository extends JpaRepository<LoggedUser, Long> {
+    Optional<LoggedUser> findByUsername(String username);
 }

@@ -8,7 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import ro.itschool.model.User;
+import ro.itschool.model.LoggedUser;
 import ro.itschool.service.JwtService;
 
 import java.security.Key;
@@ -33,11 +33,11 @@ public class JwtServiceImpl implements JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(User userDetails) {
+    public String generateToken(LoggedUser loggedUserDetails) {
         HashMap<String, Object> extraClaims = new HashMap<>();
-        extraClaims.put("firstName", userDetails.getFirstName());
-        extraClaims.put("lastName", userDetails.getLastName());
-        return generateToken(extraClaims, userDetails);
+        extraClaims.put("firstName", loggedUserDetails.getFirstName());
+        extraClaims.put("lastName", loggedUserDetails.getLastName());
+        return generateToken(extraClaims, loggedUserDetails);
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails

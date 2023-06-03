@@ -3,7 +3,7 @@ package ro.itschool.service;
 import io.jsonwebtoken.Claims;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import ro.itschool.model.User;
+import ro.itschool.model.LoggedUser;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -15,7 +15,7 @@ public interface JwtService {
 
     <T> T extractClaim(String token, Function<Claims, T> claimsResolver);
 
-    String generateToken(User userDetails);
+    String generateToken(LoggedUser loggedUserDetails);
 
     String generateToken(Map<String, Object> extraClaims, UserDetails userDetails);
 

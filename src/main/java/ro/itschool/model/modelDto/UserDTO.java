@@ -3,8 +3,13 @@ package ro.itschool.model.modelDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Getter
+@Transactional
+@Component
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {

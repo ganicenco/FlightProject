@@ -10,7 +10,7 @@ import ro.itschool.model.modelAuth.AuthenticationResponse;
 import ro.itschool.model.modelAuth.RegisterRequest;
 import ro.itschool.model.MyRole;
 import ro.itschool.enums.RoleName;
-import ro.itschool.model.User;
+import ro.itschool.model.LoggedUser;
 import ro.itschool.repository.RoleRepository;
 import ro.itschool.repository.UserRepository;
 import ro.itschool.service.AuthenticationService;
@@ -30,7 +30,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) {
 
         MyRole userRole = roleRepository.findByName(RoleName.ROLE_USER);
-        var user = new User();
+        var user = new LoggedUser();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
